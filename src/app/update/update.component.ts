@@ -107,6 +107,7 @@ export class UpdateComponent implements OnInit {
     // }
     
     }
+    //hi omkar set the rating
 
     // Set product rating
 setRating(rating: number): void {
