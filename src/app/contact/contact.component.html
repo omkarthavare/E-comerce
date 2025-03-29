@@ -1,0 +1,75 @@
+<app-header></app-header>
+
+
+
+
+<div class="contact-container">
+    <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate >
+      
+  
+      <!-- Name -->
+      <div class="form-group">
+        <label for="Name"> Name</label>
+        <input
+          type="text"
+          id="Name"
+          name="Name"
+          class="form-control"
+          ngModel
+          required
+          #Name="ngModel"
+        />
+        <div class="error" *ngIf="Name.invalid && Name.touched">
+          Name is required.
+        </div>
+      </div>
+  
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          [pattern]="EMAIL_PATTERN"
+          id="email"
+          name="email"
+          class="form-control"
+          ngModel
+          required
+          email
+          #email="ngModel"
+        />
+        <div class="error" *ngIf="email.invalid && email.touched">
+          Please enter a valid email address.
+          <div *ngIf="email.errors?.['pattern']">
+            ** Please Enter the Appropriate Email ID
+        </div> 
+        </div>
+      </div>
+  
+      <!-- Phone Number -->
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          type="text"
+          id="phoneNumber"
+          name="phoneNumber"
+          class="form-control"
+          ngModel
+          required
+          pattern="^[0-9]{10}$"
+          #phoneNumber="ngModel"
+        />
+        <div class="error" *ngIf="phoneNumber.invalid && phoneNumber.touched">
+          Phone number must be 10 digits.
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">
+       Submit
+      </button>
+    </form>
+  </div>
+  <hr>
+
+  <app-footer class="fixed-bottom" ></app-footer>
+
